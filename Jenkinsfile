@@ -18,7 +18,7 @@ pipeline{
       steps {       
         sh '''
           for i in {1..10}; do
-            STATUS=$(docker inspect --format='{{.State.Health.Status}}' node_app)
+            STATUS=$(docker inspect --format='{{.State.Health.Status}}' node-app)
             echo "Health status: $STATUS"
             [ "$STATUS" == "healthy" ] && exit 0
             sleep 5
