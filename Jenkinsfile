@@ -18,7 +18,7 @@ pipeline{
       steps{
         sh '''
           sleep 10
-          docker exec node_app curl -f http://localhost:3000
+          docker exec node-app curl -f http://localhost:3000
           '''
       }
     }
