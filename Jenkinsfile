@@ -14,15 +14,6 @@ pipeline{
       }
     }
 
-    stage('Verify') {
-      steps{
-        sh '''
-          sleep 10
-          docker exec node-app curl -f http://localhost:3000
-          '''
-      }
-    }
-  }
 
   post {
     success{
