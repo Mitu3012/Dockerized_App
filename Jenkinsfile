@@ -17,10 +17,18 @@ pipeline{
     stage('Verify') {
       steps {       
         sh '''
-          for i in {1..10}; do
+
+          i=1
+          while [ $i -le 10 ]; do
             STATUS=$(docker inspect --format='{{.State.Health.Status}}' node-app)
             echo "Health status: $STATUS"
-            [ "$STATUS" == "healthy" ] && exit 0
+            
+            if [ "$STATUS" = "healthy" ]; then
+              echo "Container is healthy"
+              exit 0
+            fi
+            
+            i=$((i + 1))
             sleep 5
           done
           exit 1
